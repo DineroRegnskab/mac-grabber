@@ -15,5 +15,5 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 2. Kør følgende script af
 
 <pre>
-curl -s -fSSL https://raw.githubusercontent.com/DineroRegnskab/mac-grabber/main/MacOS.sh | sh
+curl -s -fSSL https://raw.githubusercontent.com/DineroRegnskab/mac-grabber/main/MacOS.sh | bash
 </pre>
