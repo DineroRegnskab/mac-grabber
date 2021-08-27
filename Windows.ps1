@@ -1,7 +1,7 @@
 $Lan = $null;
 $WiFi = $null;
 
-Get-NetAdapter -Physical | % {
+Get-NetAdapter -Physical | % {
 
     if ($_.Name.StartsWith("Ethernet") -and $Lan -eq $null)
     {
@@ -16,20 +16,20 @@ Get-NetAdapter -Physical | % {
 
 if ($Lan -eq $null)
 {
-    "✖ LAN adresse ikke fundet. Forbind din PC via et kabel."
+    "LAN adresse ikke fundet. Forbind din PC via et kabel."
     return;
 }
 else
 {
-    "✔ LAN adresse fundet: ${Lan}"
+    "LAN adresse fundet: ${Lan}"
 }
 
 if ($WiFi -eq $null)
 {
-    "✖ Wi-Fi adresse ikke fundet. Forbind din PC til et Wi-Fi."
+    "Wi-Fi adresse ikke fundet. Forbind din PC til et Wi-Fi."
     return;
 }
 else
 {
-    "✔ Wi-Fi adresse fundet: ${WiFi}"
+    "Wi-Fi adresse fundet: ${WiFi}"
 }
