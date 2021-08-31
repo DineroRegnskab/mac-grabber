@@ -8,7 +8,7 @@ Get-NetAdapter -Physical | % {
         $Lan = $_.MacAddress;
     }
 
-    if ($_.Name -eq "Wi-Fi" -and $WiFi -eq $null)
+    if ($_.Name.StartsWith("Wi-Fi") -and $WiFi -eq $null)
     {
         $WiFi = $_.MacAddress;
     }
