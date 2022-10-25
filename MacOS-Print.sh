@@ -10,7 +10,7 @@ readonly REQUIRE_ICON=false
 # Number of seconds to wait for TCP verification before exiting
 readonly CHECK_TIMEOUT=5
 # Base info
-readonly PPD="/tmp/${PRINTER_NAME}.ppd"
+readonly PPD="~/Library/Caches/TemporaryItems/${PRINTER_NAME}.ppd"
 readonly AIR_PPD='/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/AirPrint.ppd'
 readonly EXE='/System/Library/Printers/Libraries/ipp2ppd'
 
