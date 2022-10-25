@@ -10,9 +10,9 @@ readonly REQUIRE_ICON=false
 # Number of seconds to wait for TCP verification before exiting
 readonly CHECK_TIMEOUT=5
 # Base info
-readonly PPD="${TMPDIR + PRINTER_NAME}.ppd"
 readonly AIR_PPD='/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/Resources/AirPrint.ppd'
 readonly EXE='/System/Library/Printers/Libraries/ipp2ppd'
+readonly PPD="$(echo $TMPDIR)${PRINTER_NAME}.ppd"
 
 CheckPrinter() {
   echo -e "\033[1;30m👀 Et øjeblik! Vi tjekker lige at printeren er klar...\033[0m"
