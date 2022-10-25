@@ -15,28 +15,28 @@ readonly AIR_PPD='/System/Library/Frameworks/ApplicationServices.framework/Versi
 readonly EXE='/System/Library/Printers/Libraries/ipp2ppd'
 
 CheckPrinter() {
-    echo -e "\033[1;30m👀 Et øjeblik! Vi tjekker lige at printeren er klar...\033[0m"
-    local CHECK=$(/usr/bin/nc -G ${CHECK_TIMEOUT} -z ${PRINTER_IP} 631 2&> /dev/null; /bin/echo $?)
+  echo -e "\033[1;30m👀 Et øjeblik! Vi tjekker lige at printeren er klar...\033[0m"
+  local CHECK=$(/usr/bin/nc -G ${CHECK_TIMEOUT} -z ${PRINTER_IP} 631 2&> /dev/null; /bin/echo $?)
 
-	if [ "$CHECK" != 0 ]; then
-        echo -e "\033[1;31m❌ Åh åh... printeren kunne ikke tilføjes. Er du på kontoret? Og på VismaTech5 netværket?\033[0m"
-		exit 1
-	fi
+  if [ "$CHECK" != 0 ]; then
+    echo -e "\033[1;31m❌ Åh åh... printeren kunne ikke tilføjes. Er du på kontoret? Og på VismaTech5 netværket?\033[0m"
+    exit 1
+  fi
 }
 
 CreatePPD() {
-	$EXE ipp://${PRINTER_IP} "$AIR_PPD" > "$PPD"
+  $EXE ipp://${PRINTER_IP} "$AIR_PPD" > "$PPD"
 }
 
 InstallPrinter() {
-	/usr/sbin/lpadmin -p ${PRINTER_NAME} -D "${PRINTER_DISPLAY_NAME}" -L "${PRINTER_LOCATION}" -E -v ipp://${PRINTER_IP} -P ${PPD} -o printer-is-shared=false 2&> /dev/null
+  /usr/sbin/lpadmin -p ${PRINTER_NAME} -D "${PRINTER_DISPLAY_NAME}" -L "${PRINTER_LOCATION}" -E -v ipp://${PRINTER_IP} -P ${PPD} -o printer-is-shared=false
 }
 
 main() {
-    CheckPrinter
-	CreatePPD
-	InstallPrinter
-    echo -e "\033[1;32m✅ Printeren er nu tilføjet. Du kan lukke dette vindue igen.\033[0m"
+  CheckPrinter
+  CreatePPD
+  InstallPrinter
+  echo -e "\033[1;32m✅ Printeren er nu tilføjet. Du kan lukke dette vindue igen.\033[0m"
 }
 
 main "@"
